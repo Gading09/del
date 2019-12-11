@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+</head>
+<body class="blog-body">
+    <header>
+        <div class="container">
+            <div class="row align-items-center blok-header">
+                <div class="col-md-6 align-items-center company-name">
+                    Alpha Tech Academy
+                </div>
+                <div class="col-md-6">
+                    <div class="header-nav">
+                        <ul class="header-nav__list list-unstyled">  
+                            <li> 
+                                <a href="{% url 'home' %}">Home</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'blog' %}" class="active-page">Blog</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'mentor' %}">Mentor</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'mentee' %}">Mentee</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'author' %}">Author</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid left-right-container page-title-background">
+        <div class="container page-title">
+            {% load static %}
+            <div class='company-logo'><img src="../../static/assets/img/title/alpha-logo.png"" alt="Gambar Logo"></div>
+            <h1>Alpha Tech Academy Blog</h1>
+        </div>          
+    </div>
+    <div class="container">
+        <form method="POST" action="submit">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-1 label">
+                    <label for="">Foto :</label><br>
+                    <label for="">Judul :</label><br>
+                    <label for="">Berita :</label><br>
+                </div>
+                <div class="col-8 input">
+                    <input type="text" name="foto" placeholder="https://image.jpg" required><br>
+                    <input type="text" name="judul" placeholder="judul" required><br>
+                    <textarea name="berita" cols="50" rows="10" placeholder="Masukkan berita yang viral !" required></textarea><br>
+                    <input type="submit" value="ok"><br>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+{% block content1 %}
+</body>
+</html>
+{% endblock %}
